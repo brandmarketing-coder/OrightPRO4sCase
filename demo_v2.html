@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>O'right PRO 4S 翎羽燙｜案例分享</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset & Base ── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    :root {
+      --green-dark: #19322f;
+      --green-mid: #19322f;
+      --green-accent: #84bd00;
+      --gold: #c9a84c;
+      --white: #ffffff;
+      --bg: #ebebeb;
+      --bg-section: #f5f5f5;
+      --text-head: #313131;
+      --text-body: #666666;
+      --border: #e0e0e0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Arial', 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Microsoft JhengHei', sans-serif;
+      background: var(--bg);
+      color: var(--text-body);
+      font-size: 15px;
+      line-height: 1.7;
+      letter-spacing: 0.4px;
+      max-width: 430px;
+      margin: 0 auto;
+      min-height: 100vh;
+    }
+
+    /* ── Sticky Header wrapper ── */
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--green-dark);
+    }
+
+    #hamburger {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .header-container {
+      background: var(--green-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0.7rem 1rem;
+    }
+
+    .logo {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .logo a {
+      display: block;
+      max-width: 70px;
+      margin: 0 auto;
+    }
+
+    .logo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      -ms-interpolation-mode: nearest-neighbor;
+    }
+
+    #dish {
+      position: absolute;
+      left: 0;
+      top: 50%;
+      display: block;
+      width: 21px;
+      height: 14px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    #dish span,
+    #dish span::before,
+    #dish span::after {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--white);
+      content: '';
+      transition: 0.4s;
+    }
+
+    #dish span {
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #dish span::before {
+      bottom: 6px;
+    }
+
+    #dish span::after {
+      top: 6px;
+    }
+
+    #hamburger:checked~.header-container .logo #dish span {
+      visibility: hidden;
+    }
+
+    #hamburger:checked~.header-container .logo #dish span::before,
+    #hamburger:checked~.header-container .logo #dish span::after {
+      background-color: var(--green-accent);
+      visibility: visible;
+    }
+
+    #hamburger:checked~.header-container .logo #dish span::before {
+      transform: rotate(-45deg) translate(-4px, 4px) scaleX(1.1);
+    }
+
+    #hamburger:checked~.header-container .logo #dish span::after {
+      transform: rotate(45deg) translate(-4px, -4px) scaleX(1.1);
+    }
+
+    /* ── Quick Nav ── */
+    .quick-nav {
+      display: flex;
+      justify-content: center;
+      overflow-x: auto;
+      scrollbar-width: none;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .quick-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    .quick-nav a {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 1.2px;
+      color: var(--text-body);
+      text-decoration: none;
+      padding: 13px 18px;
+      border-bottom: 2px solid transparent;
+      transition: color 0.2s, border-color 0.2s;
+      white-space: nowrap;
+    }
+
+    .quick-nav a:active {
+      color: var(--green-dark);
+      border-bottom-color: var(--green-accent);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: var(--green-dark);
+      color: var(--white);
+      padding: 64px 28px 56px;
+      text-align: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 9px;
+      letter-spacing: 3.5px;
+      color: rgba(255, 255, 255, 0.4);
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 400;
+      line-height: 1.45;
+      letter-spacing: 2px;
+      margin-bottom: 6px;
+      color: var(--white);
+    }
+
+    .hero-rule {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      margin: 20px auto;
+      opacity: 0.7;
+    }
+
+    .hero-sub {
+      font-size: 11px;
+      letter-spacing: 2px;
+      color: rgba(255, 255, 255, 0.6);
+      margin-bottom: 16px;
+      font-weight: 400;
+    }
+
+    .hero p {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.55);
+      line-height: 2;
+      margin-bottom: 40px;
+      letter-spacing: 0.6px;
+    }
+
+    .hero-cta {
+      display: inline-block;
+      background: var(--green-accent);
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 13px 36px;
+      text-decoration: none;
+      transition: opacity 0.15s ease-in;
+    }
+
+
+    /* ── Demo note ── */
+    .demo-note {
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 10px 20px;
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── Section ── */
+    section {
+      padding: 52px 24px;
+    }
+
+    .about-bg {
+      background: var(--white);
+    }
+
+    .cards-bg {
+      background: var(--bg-section);
+    }
+
+    .cases-bg {
+      background: var(--white);
+    }
+
+    .section-eyebrow {
+      font-size: 9px;
+      letter-spacing: 3px;
+      color: var(--green-accent);
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 12px;
+      opacity: 0.9;
+    }
+
+    .section-title {
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--text-head);
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+      line-height: 1.4;
+    }
+
+    .section-rule {
+      width: 24px;
+      height: 1px;
+      background: var(--green-accent);
+      margin: 16px 0 24px;
+    }
+
+    .section-desc {
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.95;
+      opacity: 0.9;
+    }
+
+    /* ── Bullet list ── */
+    .bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      margin-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+
+    .bullet-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 13.5px;
+      color: var(--text-body);
+      line-height: 1.75;
+    }
+
+    .bullet-num {
+      flex-shrink: 0;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: var(--green-accent);
+      font-weight: 400;
+      padding-top: 4px;
+      min-width: 20px;
+    }
+
+    .bullet-list strong {
+      color: var(--text-head);
+      font-weight: 700;
+      display: block;
+      margin-bottom: 2px;
+      font-size: 13.5px;
+    }
+
+    /* ── Tech block ── */
+    .tech-block {
+      margin-top: 36px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+    }
+
+    .tech-block-title {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-body);
+      opacity: 0.6;
+      margin-bottom: 20px;
+    }
+
+    .tech-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 12.5px;
+      color: var(--text-body);
+      line-height: 1.65;
+    }
+
+    .tech-row:first-of-type {
+      border-top: 1px solid var(--border);
+    }
+
+    .tech-dot {
+      flex-shrink: 0;
+      width: 4px;
+      height: 4px;
+      background: var(--green-accent);
+      margin-top: 9px;
+    }
+
+    .tech-name {
+      font-weight: 700;
+      color: var(--text-head);
+    }
+
+    /* ── Cards ── */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      margin-top: 32px;
+      border: 1px solid var(--border);
+    }
+
+    .card {
+      background: var(--white);
+      padding: 22px 18px 26px;
+      display: block;
+      color: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.2s;
+      position: relative;
+    }
+
+    .card::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--green-accent);
+      margin-bottom: 18px;
+      transition: background 0.2s;
+    }
+
+    .card:active {
+      background: var(--bg-section);
+    }
+
+    .card:focus-visible {
+      outline: 2px solid var(--green-accent);
+      outline-offset: -2px;
+    }
+
+    .card-num {
+      font-size: 9px;
+      letter-spacing: 1.5px;
+      color: var(--green-accent);
+      opacity: 0.65;
+      margin-bottom: 10px;
+      font-weight: 400;
+    }
+
+    .card-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--text-head);
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .card-suit {
+      font-size: 10px;
+      color: var(--text-body);
+      letter-spacing: 0.8px;
+      margin-bottom: 12px;
+      opacity: 0.75;
+    }
+
+    .card-desc {
+      font-size: 12px;
+      color: var(--text-body);
+      line-height: 1.75;
+      opacity: 0.85;
+    }
+
+    /* ── Cases ── */
+    .case-group {
+      margin-bottom: 48px;
+      scroll-margin-top: 112px;
+    }
+
+    .case-group:last-child {
+      margin-bottom: 0;
+    }
+
+    .case-group-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .case-group-label {
+      font-size: 9px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--text-head);
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .case-group-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* Before/After slider */
+    .ba-wrapper {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3/4;
+      overflow: hidden;
+      user-select: none;
+      margin-bottom: 0;
+      background: var(--bg);
+    }
+
+    .ba-after,
+    .ba-before {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .ba-before {
+      clip-path: inset(0 50% 0 0);
+    }
+
+    .img-cold-1-after {
+      background-image: url('img/披頭_冷燙_李仁智A.png');
+    }
+
+    .img-cold-1-before {
+      background-image: url('img/披頭_冷燙_李仁智B.png');
+    }
+
+    .img-warm-1-after {
+      background-image: url('img/奈思_溫塑_楊詩佳A.png');
+    }
+
+    .img-warm-1-before {
+      background-image: url('img/奈思_溫塑_楊詩佳B.png');
+    }
+
+    .img-ion-1-after {
+      background-image: url('img/麗園_離子燙_李仁智A.png');
+    }
+
+    .img-ion-1-before {
+      background-image: url('img/麗園_離子燙_李仁智B.png');
+    }
+
+    .img-curly-1-after {
+      background-image: url('img/芳采_離子燙_李仁智A.png');
+    }
+
+    .img-curly-1-before {
+      background-image: url('img/芳采_離子燙_李仁智B.png');
+    }
+
+    .ba-after::after,
+    .ba-before::after {
+      position: absolute;
+      bottom: 10px;
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: rgba(0, 0, 0, 0.45);
+      padding: 3px 10px;
+      background: rgba(255, 255, 255, 0.7);
+    }
+
+    .ba-after::after {
+      content: 'After';
+      right: 10px;
+    }
+
+    .ba-before::after {
+      content: 'Before';
+      left: 10px;
+    }
+
+    .ba-handle {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      background: rgba(255, 255, 255, 0.8);
+      cursor: ew-resize;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .ba-handle-circle {
+      width: 28px;
+      height: 28px;
+      background: var(--white);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 11px;
+      color: var(--green-dark);
+      pointer-events: none;
+      box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+    }
+
+    /* case caption */
+    .case-caption {
+      border: 1px solid var(--border);
+      border-top: none;
+      padding: 14px 16px;
+      margin-bottom: 0;
+    }
+
+    .case-caption-row {
+      display: flex;
+      gap: 10px;
+      font-size: 11.5px;
+      color: var(--text-body);
+      padding: 5px 0;
+      border-bottom: 1px solid var(--bg);
+      align-items: flex-start;
+    }
+
+    .case-caption-row:last-child {
+      border-bottom: none;
+    }
+
+    .caption-key {
+      font-weight: 600;
+      color: var(--text-head);
+      min-width: 52px;
+      flex-shrink: 0;
+      letter-spacing: 0.3px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--green-dark);
+      color: var(--white);
+      text-align: center;
+      padding: 64px 28px;
+    }
+
+    .cta-eyebrow {
+      font-size: 9px;
+      font-weight: 600;
+      letter-spacing: 3px;
+      color: rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .cta-section h2 {
+      font-size: 22px;
+      font-weight: 400;
+      letter-spacing: 1.5px;
+      line-height: 1.55;
+      margin-bottom: 6px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .cta-rule {
+      width: 24px;
+      height: 1px;
+      background: var(--green-accent);
+      margin: 20px auto 20px;
+      opacity: 0.7;
+    }
+
+    .cta-section p {
+      font-size: 12.5px;
+      color: rgba(255, 255, 255, 0.45);
+      line-height: 1.95;
+      margin-bottom: 36px;
+      letter-spacing: 0.4px;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: var(--green-accent);
+      color: var(--green-dark);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 14px 40px;
+      text-decoration: none;
+      transition: opacity 0.15s ease-in;
+    }
+
+
+    /* ── Footer ── */
+    .footer-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 20px;
+      background: var(--white);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-back-top {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      letter-spacing: 1px;
+      color: var(--text-head);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .footer-back-top:active {
+      color: var(--green-accent);
+    }
+
+    .footer-back-top .arrow {
+      font-size: 14px;
+      line-height: 1;
+    }
+
+    .footer-action-btn {
+      font-size: 11px;
+      letter-spacing: 1.2px;
+      color: var(--text-head);
+      text-decoration: none;
+      border: 1px solid #bbb;
+      padding: 7px 18px;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .footer-action-btn:active {
+      background: var(--green-dark);
+      color: var(--white);
+      border-color: var(--green-dark);
+    }
+
+    .footer-note {
+      padding: 14px 20px;
+      background: var(--white);
+      font-size: 11px;
+      color: #999;
+      letter-spacing: 0.3px;
+      line-height: 1.7;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .footer-bottom {
+      background: #4a4a4a;
+      padding: 20px 20px 28px;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+
+    .footer-social a {
+      color: rgba(255, 255, 255, 0.6);
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+      transition: color 0.15s;
+    }
+
+    .footer-social a:active {
+      color: var(--white);
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .footer-links a {
+      font-size: 11px;
+      letter-spacing: 0.5px;
+      color: rgba(255, 255, 255, 0.5);
+      text-decoration: none;
+    }
+
+    .footer-copy {
+      font-size: 10px;
+      letter-spacing: 0.3px;
+      color: rgba(255, 255, 255, 0.3);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Sticky Header -->
+  <header class="site-header" style="top: 0px;">
+    <input id="hamburger" type="checkbox">
+    <div class="header-container">
+      <div class="logo">
+        <label for="hamburger" id="dish"><span></span></label>
+        <a href="https://pro.oright.inc/" aria-label="O'right PRO 官網">
+          <img src="https://pro.oright.inc/img/logo_new.png" alt="logo">
+        </a>
+      </div>
+    </div>
+    <div class="quick-nav">
+      <a href="#about">翎羽燙是什麼</a>
+      <a href="#types">四大燙法</a>
+      <a href="#cases">案例分享</a>
+      <a href="#contact">聯絡我們</a>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="hero-eyebrow">Professional Hair Care System</div>
+    <h1>O | PRO 4S 翎羽燙</h1>
+    <div class="hero-rule"></div>
+    <div class="hero-sub">純半胱胺全新燙髮系統</div>
+    <p>無鹽・無氯・免沖洗<br>柔順無味・光澤重生</p>
+    <a href="#contact" class="hero-cta">了解方案</a>
+  </div>
+
+  <!-- About -->
+  <section class="about-bg" id="about">
+    <div class="section-eyebrow">About</div>
+    <div class="section-title">什麼是<br>4S 翎羽燙？</div>
+    <div class="section-rule"></div>
+    <p class="section-desc">四大獨家創新科技，重新定義次世代燙髮之美。以邁克爾加乘反應的 4S 鏈結科技護髮芯結構，結合專利植萃全面滋養髮絲，實現不過燙、不斷燒、韌性高、可續燙的燙髮新體驗。</p>
+
+    <ul class="bullet-list">
+      <li>
+        <div class="bullet-num">01</div>
+        <div>
+          <strong>純半胱胺系統</strong>
+          低氣味、低刺激，無鹽・無氯・免沖洗，操作環境更安心舒適
+        </div>
+      </li>
+      <li>
+        <div class="bullet-num">02</div>
+        <div>
+          <strong>4S 鏈結科技</strong>
+          形成新型硫鍵結構，捲度持久呈現自然堅韌彈性，展現髮絲羽感魅力
+        </div>
+      </li>
+      <li>
+        <div class="bullet-num">03</div>
+        <div>
+          <strong>專利三萃修護</strong>
+          椰棗 × 酒釀 × 咖啡因，燙髮同時深層滋養，維持髮質健康平衡
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <!-- Four Types -->
+  <section class="cards-bg" id="types">
+    <div class="section-eyebrow">Technique</div>
+    <div class="section-title">四大燙法介紹</div>
+    <div class="section-rule"></div>
+    <p class="section-desc">翎羽燙適用四種主流燙髮技術，依顧客髮質與需求靈活選擇，一套產品全方位應用。</p>
+
+    <div class="cards-grid">
+
+      <a href="#case-cold" class="card card-cold">
+        <div class="card-num">01</div>
+        <div class="card-title">冷燙</div>
+        <div class="card-suit">受損髮・細軟髮</div>
+        <div class="card-desc">純半胱胺溫和配方，低刺激不傷髮，捲度自然持久，不再乾澀毛躁。</div>
+      </a>
+
+      <a href="#case-warm" class="card card-warm">
+        <div class="card-num">02</div>
+        <div class="card-title">溫塑燙</div>
+        <div class="card-suit">自然捲感・蓬鬆感</div>
+        <div class="card-desc">可加熱特性，60°C 完美塑型，打造蓬鬆柔波捲，光澤彈潤自然。</div>
+      </a>
+
+      <a href="#case-ion" class="card card-ion">
+        <div class="card-num">03</div>
+        <div class="card-title">離子燙</div>
+        <div class="card-suit">柔順直髮・毛躁改善</div>
+        <div class="card-desc">4S 鍵結加乘修護，直順同時強化髮芯，柔韌光澤不乾澀。</div>
+      </a>
+
+      <a href="#case-curly" class="card card-curly">
+        <div class="card-num">04</div>
+        <div class="card-title">電棒燙</div>
+        <div class="card-suit">立體造型・多變捲度</div>
+        <div class="card-desc">捲型立體持久，保有髮絲柔軟彈性，造型不生硬，自然有型。</div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- Cases -->
+  <section class="cases-bg" id="cases">
+    <div class="section-eyebrow">Case Study</div>
+    <div class="section-title">案例分享</div>
+    <div class="section-rule"></div>
+    <p class="section-desc">左右滑動中線，直接對比燙前 / 燙後髮質差異。</p>
+
+    <!-- 冷燙 -->
+    <div class="case-group" id="case-cold">
+      <div class="case-group-header">
+        <div class="case-group-label">冷燙</div>
+        <div class="case-group-line"></div>
+      </div>
+      <div class="ba-wrapper" data-ba>
+        <div class="ba-after img-cold-1-after"></div>
+        <div class="ba-before img-cold-1-before"></div>
+        <div class="ba-handle">
+          <div class="ba-handle-circle">⟷</div>
+        </div>
+      </div>
+      <div class="case-caption">
+        <div class="case-caption-row"><span class="caption-key">燙法</span>冷燙</div>
+        <div class="case-caption-row"><span class="caption-key">髮型特色</span>自然中捲，輕盈不毛躁，光澤彈潤</div>
+        <div class="case-caption-row"><span class="caption-key">適合髮質</span>受損細軟髮</div>
+      </div>
+    </div>
+
+    <!-- 溫塑燙 -->
+    <div class="case-group" id="case-warm">
+      <div class="case-group-header">
+        <div class="case-group-label">溫塑燙</div>
+        <div class="case-group-line"></div>
+      </div>
+      <div class="ba-wrapper" data-ba>
+        <div class="ba-after img-warm-1-after"></div>
+        <div class="ba-before img-warm-1-before"></div>
+        <div class="ba-handle">
+          <div class="ba-handle-circle">⟷</div>
+        </div>
+      </div>
+      <div class="case-caption">
+        <div class="case-caption-row"><span class="caption-key">燙法</span>溫塑燙</div>
+        <div class="case-caption-row"><span class="caption-key">髮型特色</span>蓬鬆柔波捲，自然有光澤，捲度堅韌持久</div>
+        <div class="case-caption-row"><span class="caption-key">適合髮質</span>一般髮質、略粗硬髮</div>
+      </div>
+    </div>
+
+    <!-- 離子燙 -->
+    <div class="case-group" id="case-ion">
+      <div class="case-group-header">
+        <div class="case-group-label">離子燙</div>
+        <div class="case-group-line"></div>
+      </div>
+      <div class="ba-wrapper" data-ba>
+        <div class="ba-after img-ion-1-after"></div>
+        <div class="ba-before img-ion-1-before"></div>
+        <div class="ba-handle">
+          <div class="ba-handle-circle">⟷</div>
+        </div>
+      </div>
+      <div class="case-caption">
+        <div class="case-caption-row"><span class="caption-key">燙法</span>離子燙</div>
+        <div class="case-caption-row"><span class="caption-key">髮型特色</span>絲滑直順，柔韌光澤，不乾澀不脆化</div>
+        <div class="case-caption-row"><span class="caption-key">適合髮質</span>自然捲、毛躁髮</div>
+      </div>
+    </div>
+
+    <!-- 電棒燙 -->
+    <div class="case-group" id="case-curly">
+      <div class="case-group-header">
+        <div class="case-group-label">電棒燙</div>
+        <div class="case-group-line"></div>
+      </div>
+      <div class="ba-wrapper" data-ba>
+        <div class="ba-after img-curly-1-after"></div>
+        <div class="ba-before img-curly-1-before"></div>
+        <div class="ba-handle">
+          <div class="ba-handle-circle">⟷</div>
+        </div>
+      </div>
+      <div class="case-caption">
+        <div class="case-caption-row"><span class="caption-key">燙法</span>電棒燙</div>
+        <div class="case-caption-row"><span class="caption-key">髮型特色</span>立體大捲，彈性自然，捲度清晰不生硬</div>
+        <div class="case-caption-row"><span class="caption-key">適合髮質</span>健康髮、略粗髮</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CTA -->
+  <div class="cta-section" id="contact">
+    <div class="cta-eyebrow">Contact</div>
+    <h2>柔韌・光澤・自然<br>重新定義燙髮質感</h2>
+    <div class="cta-rule"></div>
+    <p>想為您的沙龍引進 4S 翎羽燙<br>立即聯絡 O’right | PRO 業務代表<br>了解專屬服務方案與報價</p>
+    <a href="https://lin.ee/Mn76NBM" class="cta-btn">O’right | PRO</a>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-note">
+      O'right 歐萊德國際股份有限公司<br>
+      O'right PRO 4S 翎羽燙為專業沙龍級產品，建議由受訓美髮師操作。
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-social">
+        <a href="#">Facebook</a>
+        <a href="#">Instagram</a>
+      </div>
+      <div class="footer-links">
+        <a href="#">隱私權政策</a>
+        <a href="#">網站使用條款</a>
+      </div>
+      <div class="footer-copy">Copyright © 2026 O'right Inc. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script>
+    document.querySelectorAll('[data-ba]').forEach(wrapper => {
+      const before = wrapper.querySelector('.ba-before');
+      const handle = wrapper.querySelector('.ba-handle');
+      let dragging = false;
+
+      function setPos(x) {
+        const rect = wrapper.getBoundingClientRect();
+        let pct = ((x - rect.left) / rect.width) * 100;
+        pct = Math.max(5, Math.min(95, pct));
+        before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        handle.style.left = pct + '%';
+      }
+
+      handle.addEventListener('mousedown', () => dragging = true);
+      handle.addEventListener('touchstart', () => dragging = true, { passive: true });
+      window.addEventListener('mouseup', () => dragging = false);
+      window.addEventListener('touchend', () => dragging = false);
+      window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+      window.addEventListener('touchmove', e => {
+        if (dragging) setPos(e.touches[0].clientX);
+      }, { passive: true });
+    });
+  </script>
+
+</body>
+
+</html>
