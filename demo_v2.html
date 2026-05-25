@@ -451,6 +451,8 @@
 
     .ba-before {
       clip-path: inset(0 50% 0 0);
+      will-change: clip-path;
+      -webkit-backface-visibility: hidden;
     }
 
     .img-cold-1-after {
@@ -514,12 +516,27 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 1px;
-      background: rgba(255, 255, 255, 0.8);
+      width: 44px;
+      background: none;
       cursor: ew-resize;
       display: flex;
       align-items: center;
       justify-content: center;
+      touch-action: none;
+      -webkit-user-select: none;
+      user-select: none;
+      will-change: left;
+    }
+
+    .ba-handle::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: rgba(255, 255, 255, 0.8);
+      transform: translateX(-50%);
     }
 
     .ba-handle-circle {
@@ -947,23 +964,35 @@
       const before = wrapper.querySelector('.ba-before');
       const handle = wrapper.querySelector('.ba-handle');
       let dragging = false;
+      let rafId = null;
 
       function setPos(x) {
-        const rect = wrapper.getBoundingClientRect();
-        let pct = ((x - rect.left) / rect.width) * 100;
-        pct = Math.max(5, Math.min(95, pct));
-        before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
-        handle.style.left = pct + '%';
+        if (rafId) return;
+        rafId = requestAnimationFrame(() => {
+          const rect = wrapper.getBoundingClientRect();
+          let pct = ((x - rect.left) / rect.width) * 100;
+          pct = Math.max(5, Math.min(95, pct));
+          before.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+          handle.style.left = pct + '%';
+          rafId = null;
+        });
       }
 
       handle.addEventListener('mousedown', () => dragging = true);
-      handle.addEventListener('touchstart', () => dragging = true, { passive: true });
+      handle.addEventListener('touchstart', e => {
+        e.preventDefault();
+        dragging = true;
+      }, { passive: false });
       window.addEventListener('mouseup', () => dragging = false);
       window.addEventListener('touchend', () => dragging = false);
+      window.addEventListener('touchcancel', () => dragging = false);
       window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
       window.addEventListener('touchmove', e => {
-        if (dragging) setPos(e.touches[0].clientX);
-      }, { passive: true });
+        if (dragging) {
+          e.preventDefault();
+          setPos(e.touches[0].clientX);
+        }
+      }, { passive: false });
     });
   </script>
 
