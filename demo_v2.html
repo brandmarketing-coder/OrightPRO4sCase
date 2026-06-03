@@ -639,103 +639,67 @@
 
 
     /* ── Footer ── */
-    .footer-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 16px 20px;
-      background: var(--white);
-      border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border);
+    /* ── Footer ── */
+    .footer-section {
+      background-color: #666;
+      color: #fff;
     }
 
-    .footer-back-top {
+    .footer-section .note {
+      padding: 0.5rem 1rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-section .note .copyright {
+      font-size: 0.8rem;
+      color: #9fa0a0;
+      padding: 0.5rem 0;
+    }
+
+    .footer-section .note .media {
+      display: flex;
+      align-items: center;
+      padding: 0.5rem 0;
+    }
+
+    .footer-section .note .media a {
+      text-decoration: none;
+      padding: 0 4px;
+      width: 38px;
+      display: block;
+    }
+
+    .footer-section .note .media a svg {
+      width: 100%;
+      height: auto;
+      fill: #e6e6e6;
+      transition: fill 0.2s ease-in;
+    }
+
+    .footer-section .note .media a:active svg {
+      fill: var(--green-accent);
+    }
+
+    .footer-section .note .media .primary {
       display: flex;
       align-items: center;
       gap: 8px;
-      font-size: 14px;
-      letter-spacing: 1px;
-      color: var(--text-head);
-      text-decoration: none;
-      transition: color 0.15s;
+      margin-left: 8px;
     }
 
-    .footer-back-top:active {
+    .footer-section .note .media .primary a {
+      color: #e6e6e6;
+      font-size: 0.85rem;
+      width: auto;
+      padding: 0;
+      white-space: nowrap;
+    }
+
+    .footer-section .note .media .primary a:active {
       color: var(--green-accent);
-    }
-
-    .footer-back-top .arrow {
-      font-size: 14px;
-      line-height: 1;
-    }
-
-    .footer-action-btn {
-      font-size: 13px;
-      letter-spacing: 1.2px;
-      color: var(--text-head);
-      text-decoration: none;
-      border: 1px solid #bbb;
-      padding: 7px 18px;
-      transition: background 0.15s, color 0.15s;
-    }
-
-    .footer-action-btn:active {
-      background: var(--green-dark);
-      color: var(--white);
-      border-color: var(--green-dark);
-    }
-
-    .footer-note {
-      padding: 14px 20px;
-      background: var(--white);
-      font-size: 13px;
-      color: #999;
-      letter-spacing: 0.3px;
-      line-height: 1.7;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .footer-bottom {
-      background: #4a4a4a;
-      padding: 20px 20px 28px;
-    }
-
-    .footer-social {
-      display: flex;
-      gap: 14px;
-      margin-bottom: 14px;
-    }
-
-    .footer-social a {
-      color: rgba(255, 255, 255, 0.6);
-      text-decoration: none;
-      font-size: 14px;
-      letter-spacing: 0.5px;
-      transition: color 0.15s;
-    }
-
-    .footer-social a:active {
-      color: var(--white);
-    }
-
-    .footer-links {
-      display: flex;
-      gap: 16px;
-      margin-bottom: 14px;
-    }
-
-    .footer-links a {
-      font-size: 12px;
-      letter-spacing: 0.5px;
-      color: rgba(255, 255, 255, 0.5);
-      text-decoration: none;
-    }
-
-    .footer-copy {
-      font-size: 11px;
-      letter-spacing: 0.3px;
-      color: rgba(255, 255, 255, 0.3);
-      line-height: 1.6;
     }
   </style>
 </head>
@@ -940,17 +904,21 @@
   </div>
 
   <!-- Footer -->
-  <footer>
-    <div class="footer-bottom">
-      <div class="footer-social">
-        <a href="#">Facebook</a>
-        <a href="#">Instagram</a>
+  <footer class="footer-section">
+    <div class="note">
+      <div class="media">
+        <a href="https://www.facebook.com/profile.php?id=100092424744418" target="_blank" aria-label="Facebook">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15.7 2H8.3C4.8 2 2 4.8 2 8.3v7.4C2 19.2 4.8 22 8.3 22h3.4v-7H9.4v-2.7h2.3v-2c-.2-1.8 1.1-3.4 2.9-3.6h.6c.7 0 1.4 0 2.1.1v2.4h-1.4c-1.1 0-1.3.5-1.3 1.3v1.7h2.7l-.4 2.8h-2.4v7h1.2c3.5 0 6.3-2.8 6.3-6.3V8.3C22 4.8 19.2 2 15.7 2z"></path></svg>
+        </a>
+        <a href="https://www.instagram.com/oright_pro/" target="_blank" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 9.6c-1.3 0-2.4 1.1-2.4 2.4s1.1 2.4 2.4 2.4 2.4-1.1 2.4-2.4c-.1-1.3-1.1-2.3-2.4-2.4z"></path><path d="M14.6 6.5H9.4c-1.6 0-2.9 1.3-2.9 2.9v5.2c0 1.6 1.3 2.9 2.9 2.9h5.2c1.6 0 2.9-1.3 2.9-2.9V9.4c0-1.6-1.3-2.9-2.9-2.9zM12 15.9c-2.2 0-3.9-1.8-3.9-3.9 0-2.2 1.8-3.9 3.9-3.9 2.2 0 3.9 1.8 3.9 3.9 0 2.2-1.7 3.9-3.9 3.9zm3.7-7c-.3 0-.5-.2-.5-.5s.2-.5.5-.5.5.2.5.5c0 .2-.3.5-.5.5z"></path><path d="M15.7 2H8.3C4.8 2 2 4.8 2 8.3v7.4C2 19.2 4.8 22 8.3 22H15.7c3.5 0 6.3-2.8 6.3-6.3V8.3C22 4.8 19.2 2 15.7 2zm3.4 12.6c0 2.5-2 4.4-4.4 4.4H9.4C6.9 19 5 17 5 14.6V9.4C5 6.9 7 5 9.4 5h5.2C17.1 5 19 7 19 9.4v5.2z"></path></svg>
+        </a>
+        <div class="primary">
+          <a href="https://pro.oright.inc/page/privacy">隱私權政策</a>
+          <a href="https://pro.oright.inc/page/webuse">網站使用條款</a>
+        </div>
       </div>
-      <div class="footer-links">
-        <a href="#">隱私權政策</a>
-        <a href="#">網站使用條款</a>
-      </div>
-      <div class="footer-copy">Copyright © 2026 O'right Inc. All rights reserved.</div>
+      <div class="copyright">Copyright © 2026 O'right Inc. All rights reserved.</div>
     </div>
   </footer>
 
