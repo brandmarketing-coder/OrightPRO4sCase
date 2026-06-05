@@ -597,6 +597,12 @@
       display: block;
     }
 
+    /* 讓非 active panel 的背景圖也預先載入（不影響版面） */
+    .case-panel .ba-after,
+    .case-panel .ba-before {
+      background-color: var(--bg);
+    }
+
     /* case caption */
     .case-caption {
       border: 1px solid var(--border);
@@ -789,7 +795,7 @@
         <div class="bullet-num">01</div>
         <div>
           <strong>純半胱胺系統</strong>
-          低氣味、低刺激，無鹽・無氯・免沖洗，操作環境更安心舒適
+          無鹽酸類配方，低氣味、低刺激，免沖洗，操作環境更安心舒適
         </div>
       </li>
       <li>
@@ -1039,6 +1045,21 @@
   </footer>
 
   <script>
+    /* ── Preload all slider images ── */
+    (function() {
+      var imgs = [
+        'img/披頭_冷燙_李仁智A.png','img/披頭_冷燙_李仁智B.png',
+        'img/冷燙_北區_GaryA.png','img/冷燙_北區_GaryB.png',
+        'img/冷燙-中區-吳怡萱A.png','img/冷燙-中區-吳怡萱B.png',
+        'img/奈思_溫塑_楊詩佳A.png','img/奈思_溫塑_楊詩佳B.png',
+        'img/吉日_溫塑_中區_林采築A.png','img/吉日_溫塑_中區_林采築B.png',
+        'img/赫芙_溫塑_中區_吳怡萱A.png','img/赫芙_溫塑_中區_吳怡萱B.png',
+        'img/麗園_離子燙_李仁智A.png','img/麗園_離子燙_李仁智B.png',
+        'img/芳采_離子燙_李仁智A.png','img/芳采_離子燙_李仁智B.png'
+      ];
+      imgs.forEach(function(src) { var i = new Image(); i.src = src; });
+    })();
+
     /* ── Designer tab switching ── */
     document.querySelectorAll('.case-tabs').forEach(tabsEl => {
       tabsEl.addEventListener('click', e => {
