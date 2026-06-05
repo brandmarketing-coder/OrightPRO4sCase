@@ -455,21 +455,19 @@
       -webkit-backface-visibility: hidden;
     }
 
-    .img-cold-1-after {
-      background-image: url('img/披頭_冷燙_李仁智A.png');
-    }
+    .img-cold-1-after     { background-image: url('img/披頭_冷燙_李仁智A.png'); }
+    .img-cold-1-before    { background-image: url('img/披頭_冷燙_李仁智B.png'); }
+    .img-cold-gary-after  { background-image: url('img/冷燙_北區_GaryA.png'); }
+    .img-cold-gary-before { background-image: url('img/冷燙_北區_GaryB.png'); }
+    .img-cold-wyh-after   { background-image: url('img/冷燙-中區-吳怡萱A.png'); }
+    .img-cold-wyh-before  { background-image: url('img/冷燙-中區-吳怡萱B.png'); }
 
-    .img-cold-1-before {
-      background-image: url('img/披頭_冷燙_李仁智B.png');
-    }
-
-    .img-warm-1-after {
-      background-image: url('img/奈思_溫塑_楊詩佳A.png');
-    }
-
-    .img-warm-1-before {
-      background-image: url('img/奈思_溫塑_楊詩佳B.png');
-    }
+    .img-warm-1-after     { background-image: url('img/奈思_溫塑_楊詩佳A.png'); }
+    .img-warm-1-before    { background-image: url('img/奈思_溫塑_楊詩佳B.png'); }
+    .img-warm-lcz-after   { background-image: url('img/吉日_溫塑_中區_林采築A.png'); }
+    .img-warm-lcz-before  { background-image: url('img/吉日_溫塑_中區_林采築B.png'); }
+    .img-warm-wyh-after   { background-image: url('img/赫芙_溫塑_中區_吳怡萱A.png'); }
+    .img-warm-wyh-before  { background-image: url('img/赫芙_溫塑_中區_吳怡萱B.png'); }
 
     .img-ion-1-after {
       background-image: url('img/麗園_離子燙_李仁智A.png');
@@ -551,6 +549,52 @@
       color: var(--green-dark);
       pointer-events: none;
       box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+    }
+
+    /* ── Designer Tabs ── */
+    .case-designer-badge {
+      display: inline-block;
+      font-size: 11px;
+      color: var(--text-body);
+      border: 1px solid var(--border);
+      padding: 3px 10px;
+      margin-bottom: 14px;
+      letter-spacing: 0.5px;
+    }
+
+    .case-tabs {
+      display: flex;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 0;
+    }
+
+    .case-tab {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      padding: 10px 18px;
+      font-size: 15px;
+      font-family: inherit;
+      color: var(--text-body);
+      cursor: pointer;
+      margin-bottom: -1px;
+      letter-spacing: 0.5px;
+      transition: color 0.15s, border-color 0.15s;
+      white-space: nowrap;
+    }
+
+    .case-tab.active {
+      color: var(--text-head);
+      font-weight: 700;
+      border-bottom-color: var(--text-head);
+    }
+
+    .case-panel {
+      display: none;
+    }
+
+    .case-panel.active {
+      display: block;
     }
 
     /* case caption */
@@ -729,7 +773,7 @@
     <h1>O | PRO 4S 翎羽燙</h1>
     <div class="hero-rule"></div>
     <div class="hero-sub">純半胱胺全新燙髮系統</div>
-    <p>無氨・無鹽酸鹽・免沖洗<br>柔順無味・光澤重生</p>
+    <p>無氨・無鹽酸鹽・免沖洗<br>柔順自然・光澤重生</p>
     <a href="#about" class="hero-cta">了解方案</a>
   </div>
 
@@ -818,17 +862,53 @@
         <div class="case-group-label">冷燙</div>
         <div class="case-group-line"></div>
       </div>
-      <div class="ba-wrapper" data-ba>
-        <div class="ba-after img-cold-1-after"></div>
-        <div class="ba-before img-cold-1-before"></div>
-        <div class="ba-handle">
-          <div class="ba-handle-circle">⟷</div>
+      <div class="case-designer-badge">設計師作品</div>
+      <div class="case-tabs">
+        <button class="case-tab active" data-panel="cold-renzhi">李仁智</button>
+        <button class="case-tab" data-panel="cold-gary">Gary</button>
+        <button class="case-tab" data-panel="cold-wyh">吳怡萱</button>
+      </div>
+      <!-- 李仁智 -->
+      <div class="case-panel active" id="cold-renzhi">
+        <div class="ba-wrapper" data-ba>
+          <div class="ba-after img-cold-1-after"></div>
+          <div class="ba-before img-cold-1-before"></div>
+          <div class="ba-handle"><div class="ba-handle-circle">⟷</div></div>
+        </div>
+        <div class="case-caption">
+          <div class="case-caption-row"><span class="caption-key">設計師</span>李仁智</div>
+          <div class="case-caption-row"><span class="caption-key">燙法</span>冷燙</div>
+          <div class="case-caption-row"><span class="caption-key">髮型特色</span>自然中捲，輕盈不毛躁，光澤彈潤</div>
+          <div class="case-caption-row"><span class="caption-key">適合髮質</span>受損細軟髮</div>
         </div>
       </div>
-      <div class="case-caption">
-        <div class="case-caption-row"><span class="caption-key">燙法</span>冷燙</div>
-        <div class="case-caption-row"><span class="caption-key">髮型特色</span>自然中捲，輕盈不毛躁，光澤彈潤</div>
-        <div class="case-caption-row"><span class="caption-key">適合髮質</span>受損細軟髮</div>
+      <!-- Gary -->
+      <div class="case-panel" id="cold-gary">
+        <div class="ba-wrapper" data-ba>
+          <div class="ba-after img-cold-gary-after"></div>
+          <div class="ba-before img-cold-gary-before"></div>
+          <div class="ba-handle"><div class="ba-handle-circle">⟷</div></div>
+        </div>
+        <div class="case-caption">
+          <div class="case-caption-row"><span class="caption-key">設計師</span>Gary</div>
+          <div class="case-caption-row"><span class="caption-key">燙法</span>冷燙</div>
+          <div class="case-caption-row"><span class="caption-key">髮型特色</span>自然中捲，輕盈不毛躁，光澤彈潤</div>
+          <div class="case-caption-row"><span class="caption-key">適合髮質</span>受損細軟髮</div>
+        </div>
+      </div>
+      <!-- 吳怡萱 -->
+      <div class="case-panel" id="cold-wyh">
+        <div class="ba-wrapper" data-ba>
+          <div class="ba-after img-cold-wyh-after"></div>
+          <div class="ba-before img-cold-wyh-before"></div>
+          <div class="ba-handle"><div class="ba-handle-circle">⟷</div></div>
+        </div>
+        <div class="case-caption">
+          <div class="case-caption-row"><span class="caption-key">設計師</span>吳怡萱</div>
+          <div class="case-caption-row"><span class="caption-key">燙法</span>冷燙</div>
+          <div class="case-caption-row"><span class="caption-key">髮型特色</span>自然中捲，輕盈不毛躁，光澤彈潤</div>
+          <div class="case-caption-row"><span class="caption-key">適合髮質</span>受損細軟髮</div>
+        </div>
       </div>
     </div>
 
@@ -838,17 +918,53 @@
         <div class="case-group-label">溫塑燙</div>
         <div class="case-group-line"></div>
       </div>
-      <div class="ba-wrapper" data-ba>
-        <div class="ba-after img-warm-1-after"></div>
-        <div class="ba-before img-warm-1-before"></div>
-        <div class="ba-handle">
-          <div class="ba-handle-circle">⟷</div>
+      <div class="case-designer-badge">設計師作品</div>
+      <div class="case-tabs">
+        <button class="case-tab active" data-panel="warm-shijia">楊詩佳</button>
+        <button class="case-tab" data-panel="warm-lcz">林采築</button>
+        <button class="case-tab" data-panel="warm-wyh">吳怡萱</button>
+      </div>
+      <!-- 楊詩佳 -->
+      <div class="case-panel active" id="warm-shijia">
+        <div class="ba-wrapper" data-ba>
+          <div class="ba-after img-warm-1-after"></div>
+          <div class="ba-before img-warm-1-before"></div>
+          <div class="ba-handle"><div class="ba-handle-circle">⟷</div></div>
+        </div>
+        <div class="case-caption">
+          <div class="case-caption-row"><span class="caption-key">設計師</span>楊詩佳</div>
+          <div class="case-caption-row"><span class="caption-key">燙法</span>溫塑燙</div>
+          <div class="case-caption-row"><span class="caption-key">髮型特色</span>蓬鬆柔波捲，自然有光澤，捲度堅韌持久</div>
+          <div class="case-caption-row"><span class="caption-key">適合髮質</span>一般髮質、略粗硬髮</div>
         </div>
       </div>
-      <div class="case-caption">
-        <div class="case-caption-row"><span class="caption-key">燙法</span>溫塑燙</div>
-        <div class="case-caption-row"><span class="caption-key">髮型特色</span>蓬鬆柔波捲，自然有光澤，捲度堅韌持久</div>
-        <div class="case-caption-row"><span class="caption-key">適合髮質</span>一般髮質、略粗硬髮</div>
+      <!-- 林采築 -->
+      <div class="case-panel" id="warm-lcz">
+        <div class="ba-wrapper" data-ba>
+          <div class="ba-after img-warm-lcz-after"></div>
+          <div class="ba-before img-warm-lcz-before"></div>
+          <div class="ba-handle"><div class="ba-handle-circle">⟷</div></div>
+        </div>
+        <div class="case-caption">
+          <div class="case-caption-row"><span class="caption-key">設計師</span>林采築</div>
+          <div class="case-caption-row"><span class="caption-key">燙法</span>溫塑燙</div>
+          <div class="case-caption-row"><span class="caption-key">髮型特色</span>蓬鬆柔波捲，自然有光澤，捲度堅韌持久</div>
+          <div class="case-caption-row"><span class="caption-key">適合髮質</span>一般髮質、略粗硬髮</div>
+        </div>
+      </div>
+      <!-- 吳怡萱 -->
+      <div class="case-panel" id="warm-wyh">
+        <div class="ba-wrapper" data-ba>
+          <div class="ba-after img-warm-wyh-after"></div>
+          <div class="ba-before img-warm-wyh-before"></div>
+          <div class="ba-handle"><div class="ba-handle-circle">⟷</div></div>
+        </div>
+        <div class="case-caption">
+          <div class="case-caption-row"><span class="caption-key">設計師</span>吳怡萱</div>
+          <div class="case-caption-row"><span class="caption-key">燙法</span>溫塑燙</div>
+          <div class="case-caption-row"><span class="caption-key">髮型特色</span>蓬鬆柔波捲，自然有光澤，捲度堅韌持久</div>
+          <div class="case-caption-row"><span class="caption-key">適合髮質</span>一般髮質、略粗硬髮</div>
+        </div>
       </div>
     </div>
 
@@ -923,6 +1039,20 @@
   </footer>
 
   <script>
+    /* ── Designer tab switching ── */
+    document.querySelectorAll('.case-tabs').forEach(tabsEl => {
+      tabsEl.addEventListener('click', e => {
+        const tab = e.target.closest('.case-tab');
+        if (!tab) return;
+        const group = tabsEl.closest('.case-group');
+        const panelId = tab.dataset.panel;
+        tabsEl.querySelectorAll('.case-tab').forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+        group.querySelectorAll('.case-panel').forEach(p => p.classList.remove('active'));
+        group.querySelector('#' + panelId).classList.add('active');
+      });
+    });
+
     document.querySelectorAll('[data-ba]').forEach(wrapper => {
       const before = wrapper.querySelector('.ba-before');
       const handle = wrapper.querySelector('.ba-handle');
