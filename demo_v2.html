@@ -819,22 +819,15 @@
         max-width: 100%;
       }
 
-      /* ── Header：header-container flex，logo 左、navbar 右 ── */
-      .header-container {
-        display: flex;
-        align-items: center;
-        padding: 0 3rem;
-      }
-
+      /* ── Header：logo 置中，navbar 橫排在下（白底）── */
       .logo {
-        padding: 0.55rem 0;
-        flex-shrink: 0;
-        justify-content: flex-start;
+        padding: 0.7rem 1rem;
+        justify-content: center;
       }
 
       .logo a {
         max-width: 80px;
-        margin: 0;
+        margin: 0 auto;
       }
 
       #dish {
@@ -845,25 +838,27 @@
         max-height: none;
         overflow: visible;
         display: flex;
-        align-items: stretch;
-        flex: 1;
-        justify-content: flex-end;
+        flex-direction: row;
+        justify-content: center;
+        background: var(--white);
         border-top: none;
+        border-bottom: 1px solid var(--border);
         transition: none;
       }
 
       .navbar-content a {
         display: inline-flex;
         align-items: center;
+        color: var(--text-body);
         font-size: 13px;
-        letter-spacing: 1.5px;
-        padding: 0 18px;
+        letter-spacing: 1.2px;
+        padding: 13px 18px;
         border-bottom: 2px solid transparent;
         transition: color 0.2s, border-color 0.2s;
       }
 
       .navbar-content a:hover {
-        color: var(--white);
+        color: var(--green-dark);
         border-bottom-color: var(--green-accent);
       }
 
@@ -925,7 +920,6 @@
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 48px;
-        row-gap: 48px;       /* 上下排之間的間距 */
         align-items: start;
       }
 
@@ -938,6 +932,9 @@
 
       .cases-bg .case-group:first-of-type { margin-top: 0; }
       .case-group  { margin-bottom: 0; }
+
+      /* 只在兩排 case-group 之間加間距，不影響上方標題文字 */
+      #case-cold, #case-warm { margin-bottom: 48px; }
       .ba-wrapper  { aspect-ratio: 4 / 5; }
 
       .case-tab         { font-size: 14px; padding: 10px 16px; }
