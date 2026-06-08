@@ -47,7 +47,7 @@
       min-height: 100vh;
     }
 
-    /* ── Sticky Header wrapper ── */
+    /* ── Sticky Header ── */
     .site-header {
       position: sticky;
       top: 0;
@@ -55,16 +55,19 @@
       background: var(--green-dark);
     }
 
+    #hamburger {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .header-container {
       background: var(--green-dark);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.7rem 1rem;
+      position: relative;
     }
 
     .logo {
-      width: 100%;
+      padding: 0.7rem 1rem;
       position: relative;
       display: flex;
       align-items: center;
@@ -86,36 +89,79 @@
       -ms-interpolation-mode: nearest-neighbor;
     }
 
-    /* ── Quick Nav ── */
-    .quick-nav {
-      display: flex;
-      justify-content: center;
-      overflow-x: auto;
-      scrollbar-width: none;
+    #dish {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      display: block;
+      width: 21px;
+      height: 14px;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+
+    #dish span,
+    #dish span::before,
+    #dish span::after {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      height: 2px;
       background: var(--white);
-      border-bottom: 1px solid var(--border);
+      content: '';
+      transition: 0.4s;
     }
 
-    .quick-nav::-webkit-scrollbar {
-      display: none;
+    #dish span { top: 50%; transform: translateY(-50%); }
+    #dish span::before { bottom: 6px; }
+    #dish span::after  { top: 6px; }
+
+    /* ── Navbar（mobile：收合；desktop：展開橫列） ── */
+    .navbar-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .quick-nav a {
-      flex-shrink: 0;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 1.2px;
-      color: var(--text-body);
+    .navbar-content a {
+      display: block;
+      color: rgba(255, 255, 255, 0.72);
       text-decoration: none;
-      padding: 13px 10px;
-      border-bottom: 2px solid transparent;
-      transition: color 0.2s, border-color 0.2s;
-      white-space: nowrap;
+      padding: 14px 20px;
+      font-size: 15px;
+      letter-spacing: 1.2px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      transition: color 0.15s;
     }
 
-    .quick-nav a:active {
-      color: var(--green-dark);
-      border-bottom-color: var(--green-accent);
+    .navbar-content a:active {
+      color: var(--green-accent);
+    }
+
+    /* Mobile only：漢堡選單邏輯 */
+    @media (max-width: 899px) {
+      #hamburger:checked ~ .header-container .navbar-content {
+        max-height: 300px;
+      }
+
+      #hamburger:checked ~ .header-container .logo #dish span {
+        visibility: hidden;
+      }
+
+      #hamburger:checked ~ .header-container .logo #dish span::before,
+      #hamburger:checked ~ .header-container .logo #dish span::after {
+        background-color: var(--green-accent);
+        visibility: visible;
+      }
+
+      #hamburger:checked ~ .header-container .logo #dish span::before {
+        transform: rotate(-45deg) translate(-4px, 4px) scaleX(1.1);
+      }
+
+      #hamburger:checked ~ .header-container .logo #dish span::after {
+        transform: rotate(45deg) translate(-4px, -4px) scaleX(1.1);
+      }
     }
 
     /* ── Hero ── */
@@ -768,86 +814,76 @@
     ════════════════════════════════════════════ */
     @media (min-width: 900px) {
 
+      /* 滿版：移除 body 寬度限制，各 section 自帶背景充滿螢幕 */
       body {
-        max-width: 1200px;
+        max-width: 100%;
       }
 
-      /* ── Header：合併成單一綠色橫列 ── */
-      .site-header {
-        display: flex;
-        align-items: stretch;
-      }
-
+      /* ── Header：header-container flex，logo 左、navbar 右 ── */
       .header-container {
+        display: flex;
+        align-items: center;
+        padding: 0 3rem;
+      }
+
+      .logo {
+        padding: 0.55rem 0;
         flex-shrink: 0;
-        padding: 0.55rem 2rem;
-        border-right: 1px solid rgba(255, 255, 255, 0.12);
+        justify-content: flex-start;
       }
 
       .logo a {
         max-width: 80px;
+        margin: 0;
       }
 
-      .quick-nav {
+      #dish {
+        display: none;
+      }
+
+      .navbar-content {
+        max-height: none;
+        overflow: visible;
+        display: flex;
+        align-items: stretch;
         flex: 1;
-        border-bottom: none;
-        background: var(--green-dark);
         justify-content: flex-end;
-        padding: 0 2.5rem 0 0;
+        border-top: none;
+        transition: none;
       }
 
-      .quick-nav a {
-        color: rgba(255, 255, 255, 0.72);
+      .navbar-content a {
+        display: inline-flex;
+        align-items: center;
         font-size: 13px;
-        padding: 0 20px;
         letter-spacing: 1.5px;
+        padding: 0 18px;
+        border-bottom: 2px solid transparent;
+        transition: color 0.2s, border-color 0.2s;
       }
 
-      .quick-nav a:hover {
+      .navbar-content a:hover {
         color: var(--white);
         border-bottom-color: var(--green-accent);
       }
 
-      /* ── Hero ── */
+      /* ── Hero（滿版，內容置中）── */
       .hero {
-        padding: 100px 12% 88px;
+        padding: 100px max(80px, calc((100% - 860px) / 2)) 88px;
       }
 
-      .hero-eyebrow {
-        font-size: 12px;
-      }
+      .hero-eyebrow { font-size: 12px; }
+      .hero h1      { font-size: 48px; letter-spacing: 3px; }
+      .hero-sub     { font-size: 15px; }
+      .hero p       { font-size: 16px; }
+      .hero-cta     { font-size: 13px; padding: 15px 48px; }
 
-      .hero h1 {
-        font-size: 48px;
-        letter-spacing: 3px;
-      }
-
-      .hero-sub {
-        font-size: 15px;
-      }
-
-      .hero p {
-        font-size: 16px;
-      }
-
-      .hero-cta {
-        font-size: 13px;
-        padding: 15px 48px;
-      }
-
-      /* ── Sections ── */
+      /* ── Sections（滿版，內容最寬 1100px，自動置中）── */
       section {
-        padding: 72px 60px;
+        padding: 72px max(60px, calc((100% - 1100px) / 2));
       }
 
-      .section-title {
-        font-size: 28px;
-      }
-
-      .section-desc {
-        font-size: 15px;
-        max-width: 640px;
-      }
+      .section-title { font-size: 28px; }
 
       /* ── About：左右兩欄 ── */
       .about-bg {
@@ -869,41 +905,27 @@
         grid-row: 1 / -1;
         margin-top: 0;
         border-top: none;
-        align-self: center;
+        align-self: start;   /* 與左欄頂部對齊 */
       }
 
-      .about-bg .section-title {
-        font-size: 32px;
-      }
+      .about-bg .section-title { font-size: 32px; }
 
       /* ── 四大燙法：4 欄橫排 ── */
-      .cards-bg section,
-      section.cards-bg {
-        padding: 72px 60px;
-      }
-
       .cards-grid {
         grid-template-columns: repeat(4, 1fr);
         margin-top: 40px;
       }
 
-      .card {
-        padding: 28px 20px 32px;
-      }
-
-      .card:hover {
-        background: var(--bg-section);
-      }
-
-      .card-title {
-        font-size: 18px;
-      }
+      .card         { padding: 28px 20px 32px; }
+      .card:hover   { background: var(--bg-section); }
+      .card-title   { font-size: 18px; }
 
       /* ── 案例分享：2×2 格局 ── */
       .cases-bg {
         display: grid;
         grid-template-columns: 1fr 1fr;
         column-gap: 48px;
+        row-gap: 48px;       /* 上下排之間的間距 */
         align-items: start;
       }
 
@@ -914,64 +936,33 @@
         grid-column: 1 / -1;
       }
 
-      .cases-bg .case-group:first-of-type {
-        margin-top: 0;
-      }
+      .cases-bg .case-group:first-of-type { margin-top: 0; }
+      .case-group  { margin-bottom: 0; }
+      .ba-wrapper  { aspect-ratio: 4 / 5; }
 
-      .case-group {
-        margin-bottom: 0;
-      }
+      .case-tab         { font-size: 14px; padding: 10px 16px; }
+      .case-caption-row { font-size: 13.5px; }
 
-      .ba-wrapper {
-        aspect-ratio: 4 / 5;
-      }
-
-      .case-tab {
-        font-size: 14px;
-        padding: 10px 16px;
-      }
-
-      .case-caption-row {
-        font-size: 13.5px;
-      }
-
-      /* ── CTA ── */
+      /* ── CTA（滿版）── */
       .cta-section {
-        padding: 100px 12%;
+        padding: 100px max(80px, calc((100% - 860px) / 2));
       }
 
-      .cta-section h2 {
-        font-size: 32px;
-      }
-
-      .cta-section p {
-        font-size: 16px;
-      }
-
-      .cta-btn {
-        font-size: 14px;
-        padding: 16px 52px;
-      }
-
-      .cta-btn:hover {
-        opacity: 0.82;
-      }
+      .cta-section h2 { font-size: 32px; }
+      .cta-section p  { font-size: 16px; }
+      .cta-btn        { font-size: 14px; padding: 16px 52px; }
+      .cta-btn:hover  { opacity: 0.82; }
 
       /* ── Footer ── */
       .footer-section .note {
-        padding: 0.8rem 3.5rem;
+        padding: 0.8rem max(2rem, calc((100% - 1100px) / 2));
       }
     }
 
-    /* ── Hover 效果（有滑鼠的裝置才觸發） ── */
+    /* ── Hover 效果（有滑鼠的裝置才觸發）── */
     @media (hover: hover) {
-      .hero-cta:hover {
-        opacity: 0.82;
-      }
-
-      .case-tab:hover {
-        color: var(--text-head);
-      }
+      .hero-cta:hover { opacity: 0.82; }
+      .case-tab:hover { color: var(--text-head); }
 
       .footer-section .note .media a:hover svg {
         fill: var(--green-accent);
@@ -988,18 +979,20 @@
 
   <!-- Sticky Header -->
   <header class="site-header" style="top: 0px;">
+    <input id="hamburger" type="checkbox">
     <div class="header-container">
       <div class="logo">
+        <label for="hamburger" id="dish"><span></span></label>
         <a href="https://pro.oright.inc/" aria-label="O'right PRO 官網">
           <img src="https://pro.oright.inc/img/logo_new.png" alt="logo">
         </a>
       </div>
-    </div>
-    <div class="quick-nav">
-      <a href="#about">翎羽燙是什麼</a>
-      <a href="#types">四大燙法</a>
-      <a href="#cases">案例分享</a>
-      <a href="#contact">聯絡我們</a>
+      <div class="navbar-content">
+        <a href="#about">翎羽燙是什麼</a>
+        <a href="#types">四大燙法</a>
+        <a href="#cases">案例分享</a>
+        <a href="#contact">聯絡我們</a>
+      </div>
     </div>
   </header>
 
