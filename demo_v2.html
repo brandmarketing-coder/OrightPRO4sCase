@@ -761,6 +761,226 @@
     .footer-section .note .media .primary a:active {
       color: var(--green-accent);
     }
+
+    /* ═══════════════════════════════════════════
+       DESKTOP RWD  ≥ 900px
+       行動版版面完全不動，電腦版另行覆蓋
+    ════════════════════════════════════════════ */
+    @media (min-width: 900px) {
+
+      body {
+        max-width: 1200px;
+      }
+
+      /* ── Header：合併成單一綠色橫列 ── */
+      .site-header {
+        display: flex;
+        align-items: stretch;
+      }
+
+      .header-container {
+        flex-shrink: 0;
+        padding: 0.55rem 2rem;
+        border-right: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .logo a {
+        max-width: 80px;
+      }
+
+      .quick-nav {
+        flex: 1;
+        border-bottom: none;
+        background: var(--green-dark);
+        justify-content: flex-end;
+        padding: 0 2.5rem 0 0;
+      }
+
+      .quick-nav a {
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        padding: 0 20px;
+        letter-spacing: 1.5px;
+      }
+
+      .quick-nav a:hover {
+        color: var(--white);
+        border-bottom-color: var(--green-accent);
+      }
+
+      /* ── Hero ── */
+      .hero {
+        padding: 100px 12% 88px;
+      }
+
+      .hero-eyebrow {
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size: 48px;
+        letter-spacing: 3px;
+      }
+
+      .hero-sub {
+        font-size: 15px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .hero-cta {
+        font-size: 13px;
+        padding: 15px 48px;
+      }
+
+      /* ── Sections ── */
+      section {
+        padding: 72px 60px;
+      }
+
+      .section-title {
+        font-size: 28px;
+      }
+
+      .section-desc {
+        font-size: 15px;
+        max-width: 640px;
+      }
+
+      /* ── About：左右兩欄 ── */
+      .about-bg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 64px;
+        align-items: start;
+      }
+
+      .about-bg .section-eyebrow,
+      .about-bg .section-title,
+      .about-bg .section-rule,
+      .about-bg .section-desc {
+        grid-column: 1;
+      }
+
+      .about-bg .bullet-list {
+        grid-column: 2;
+        grid-row: 1 / -1;
+        margin-top: 0;
+        border-top: none;
+        align-self: center;
+      }
+
+      .about-bg .section-title {
+        font-size: 32px;
+      }
+
+      /* ── 四大燙法：4 欄橫排 ── */
+      .cards-bg section,
+      section.cards-bg {
+        padding: 72px 60px;
+      }
+
+      .cards-grid {
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 40px;
+      }
+
+      .card {
+        padding: 28px 20px 32px;
+      }
+
+      .card:hover {
+        background: var(--bg-section);
+      }
+
+      .card-title {
+        font-size: 18px;
+      }
+
+      /* ── 案例分享：2×2 格局 ── */
+      .cases-bg {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        column-gap: 48px;
+        align-items: start;
+      }
+
+      .cases-bg > .section-eyebrow,
+      .cases-bg > .section-title,
+      .cases-bg > .section-rule,
+      .cases-bg > p.section-desc {
+        grid-column: 1 / -1;
+      }
+
+      .cases-bg .case-group:first-of-type {
+        margin-top: 0;
+      }
+
+      .case-group {
+        margin-bottom: 0;
+      }
+
+      .ba-wrapper {
+        aspect-ratio: 4 / 5;
+      }
+
+      .case-tab {
+        font-size: 14px;
+        padding: 10px 16px;
+      }
+
+      .case-caption-row {
+        font-size: 13.5px;
+      }
+
+      /* ── CTA ── */
+      .cta-section {
+        padding: 100px 12%;
+      }
+
+      .cta-section h2 {
+        font-size: 32px;
+      }
+
+      .cta-section p {
+        font-size: 16px;
+      }
+
+      .cta-btn {
+        font-size: 14px;
+        padding: 16px 52px;
+      }
+
+      .cta-btn:hover {
+        opacity: 0.82;
+      }
+
+      /* ── Footer ── */
+      .footer-section .note {
+        padding: 0.8rem 3.5rem;
+      }
+    }
+
+    /* ── Hover 效果（有滑鼠的裝置才觸發） ── */
+    @media (hover: hover) {
+      .hero-cta:hover {
+        opacity: 0.82;
+      }
+
+      .case-tab:hover {
+        color: var(--text-head);
+      }
+
+      .footer-section .note .media a:hover svg {
+        fill: var(--green-accent);
+      }
+
+      .footer-section .note .media .primary a:hover {
+        color: var(--green-accent);
+      }
+    }
   </style>
 </head>
 
